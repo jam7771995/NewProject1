@@ -9,11 +9,25 @@
 h2{
 text-align:center;
 }
- 
+ body{
+background-image:url("https://benjaminspencer.me/images/uploads/linkedin.jpg");
+
+}
+form{
+text-align:center;
+}
+table{
+text-align:center;
+
+}
 </style>
 <body>
 
-<h2>Welcome, <%= session.getAttribute("currentUser") %>!</h2>
+<h2>Welcome, To Your Homepage <%= session.getAttribute("currentUser") %>!</h2>
+
+<br>
+
+
 
 
 <form action="/Devops_Example/api/todos" method="POST">
@@ -21,14 +35,18 @@ text-align:center;
 	<label for="title">Description</label>
 	<input type="text" name="title"><br>
 	<label for="description">Price</label>
-	<input type="text" name="description"> <br>
+	<input type="text" name="description"> <br> <br>
 	<input type="submit" value="Add Reimbursement! ">
 	
 
 </form>
 
+<br>
 
-<table>
+
+
+<table style=width:100%>
+<caption>These are Your Reimbursements</caption>
 	<thead>
 		<tr>
 			<th>ID</th>
