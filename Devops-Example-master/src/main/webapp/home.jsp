@@ -5,18 +5,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome Home!</title>
 </head>
+<style>
+h2{
+text-align:center;
+}
+ 
+</style>
 <body>
 
-<h2>Getcha todos done, <%= session.getAttribute("currentUser") %>!</h2>
+<h2>Welcome, <%= session.getAttribute("currentUser") %>!</h2>
 
 
 <form action="/Devops_Example/api/todos" method="POST">
 	
-	<label for="title">Title</label>
+	<label for="title">Description</label>
 	<input type="text" name="title"><br>
-	<label for="description">Description</label>
+	<label for="description">Price</label>
 	<input type="text" name="description"> <br>
-	<input type="submit" value="Add Todo To List!">
+	<input type="submit" value="Add Reimbursement! ">
 	
 
 </form>
@@ -26,8 +32,8 @@
 	<thead>
 		<tr>
 			<th>ID</th>
-			<th>Title</th>
 			<th>Description</th>
+			<th>Price</th>
 		</tr>
 	</thead>
 	<tbody id="todoTable"></tbody>
@@ -40,11 +46,14 @@ window.onload = () => {
 }
 
 const populateTodosTable = () => {
+	console.log("Inside populate todos table");
 	const xhr = new XMLHttpRequest();
+	
 	
 	xhr.onreadystatechange = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
 			let todos = JSON.parse(xhr.responseText);
+			console.log(todos);
 			addTodosToTable(todos);
 		}
 	}

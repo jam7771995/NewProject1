@@ -33,7 +33,7 @@ public class TodoDaoImpl implements TodoDao {
 	@Override
 	public Todo createTodo(Todo todo, String username) {
 		try (Connection conn = ConnectionFactory.getConnection()) {
-			CallableStatement stmt = conn.prepareCall("CALL CREATE_TODO(?, ?, ?)");
+			CallableStatement stmt = conn.prepareCall("CALL JONATHAN.CREATE_TODO(?, ?, ?)");
 			stmt.setString(1, todo.getTitle());
 			stmt.setString(2, todo.getDescription());
 			stmt.setString(3, username);
